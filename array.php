@@ -122,6 +122,24 @@
 
             echo $resultados["Nome"];
         ?>
+        <p>Para varrer todo o array de chave e valor precisamos de um laço de repetição exclusivo chamado foreach()</p>
+        <pre>
+            foreach ($resultados as $Chave => $valor)
+            {
+                echo $resultados[$Chave];
+                // ou
+                echo $valor;
+            }
+        </pre>
+        <?php
+        foreach ($resultados as $Chave => $valor)
+        {
+            echo "Valor pela chave: ".$resultados[$Chave]."<br>";
+            // ou
+            echo "Apenas valor: ".$valor."<br>";
+            echo "Apenas Chave: ".$Chave."<br>";
+        }
+        ?>
     </div>
     
 
