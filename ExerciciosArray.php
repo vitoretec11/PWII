@@ -117,7 +117,6 @@ $pessoas = array(
     echo "<td>".$a["Idade"]."</td>";
     echo "<td>".$a["Email"]."</td>";
     echo "</tr>";
-
    }
 
    echo "</table>";
