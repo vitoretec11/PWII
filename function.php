@@ -1,3 +1,5 @@
+<?php include "cabecalho.php"; ?>
+
 <h1> Funções nativas </h1>
 <p>Funções nativas são funções que o propio php nos fornece, como por exemplo:
      a função isset(), //Verifica se exuste a variavel
@@ -33,7 +35,7 @@ função getdate()
 <?php
     echo "<h1>";
     $array_data = getdate();
-    echo $array_data["mday"]."/".$array_data["mon"]."/".$array_data["year"];
+    echo $array_data["mday"]."/".$array_data["month"]."/".$array_data["year"];
     echo "</h1>";
     
     echo "<h1>";
@@ -41,3 +43,5 @@ função getdate()
     echo "</h1>";
 ?>
 <h1>Funções personalizadas </h1>
+
+<?php include "rodape.php"; ?>
