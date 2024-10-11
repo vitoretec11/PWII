@@ -14,7 +14,11 @@ $script = "CREATE DATABASE PW_BD;
             VALOR DECIMAL(10,2) NOT NULL,
             ATIVO BIT NOT NULL
 
-        );"
+        );
+        INSERT INTO PRODUTOS (DESCRICAO, CODIGO_BARRA, VALOR, ATIVO) VALUES ('Amendoin verde','73173172317732',5.50, 1);
+        INSERT INTO PRODUTOS (DESCRICAO, CODIGO_BARRA, VALOR, ATIVO) VALUES ('Goabinha','12313123131123',1.50, 1);
+        
+        "
         ;
 
 
