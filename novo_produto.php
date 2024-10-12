@@ -46,18 +46,19 @@ if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigoba
     }
 }
 ?>
+
 <form action="novo_produto.php" method="post">
 <label>Nome</label>
-<input type="text" name="nome" />
+<input class="form-control" type="text" name="nome" />
 <br>
 <label>Valor</label>
-<input type="number" name="valor" />
+<input class="form-control" type="number" name="valor" />
 <br>
 <label>Código de barras</label>
-<input type="text" name="codigobarras" />
+<input class="form-control" type="text" name="codigobarras" />
 <br>
 <label>Data de Validade</label>
-<input type="date" name="datavalidade" />
+<input class="form-control"  type="date" name="datavalidade" />
 <br>
 <button type="submit" class="btn btn-success">
     Enviar os dados

@@ -7,31 +7,41 @@ if( isset($_GET["pesquisa"]) )
     if( empty($pesquisa) )
     {
        //Se a variavel estiver vazia executa aqui 
+       include "conexao.php";
+       $sql ="Select Id, Descricao, Valor, Codigo_barra, Imagem from Produtos order by Id desc";
+       $resultado = $conexao->query($sql);
+       $conexao ->close();
     }
     else
     {
         //Aqui vai a lógica da pesquisa
+        include "conexao.php";
+        $sql = "Select Id, Descricao, Valor, Codigo_barra, Imagem
+                From Produtos
+                where Descricao like '%$pesquisa%'
+                order by Id desc";
+        $resultado;
     }
 }
 else
 {
     $pesquisa = "";
     include "conexao.php";
-    $sql = "Select Id, Descricao, Valor, Codigo_barras from Produtos order by Id desc";
+    $sql = "Select Id, Descricao, Valor, Codigo_barra from Produtos order by Id desc";
     $resultado = $conexao->query($sql);
     if ($resultado->num_rows > 0) {
-        while($row = $resultado->fetch_assoc()) {
-            echo "<tr>";
-            echo "<td>" . $row["Id"] . "</td>";
-            echo "<td>" . $row["Descricao"] . "</td>";
-            echo "<td>" . $row["Valor"] . "</td>";
-            echo "<td><a href='editar_produto.php?id=$row[Id]' class='btn btn-warning' >Editar</a>  ";
-            echo "<a class='btn btn-danger'>Excluir</a></td>";
-            echo "</tr>";
-        }
-    } else {
-        echo "<tr><td colspan='3'>Nenhum registro encontrado</td></tr>";
+    while($row = $resultado->fetch_assoc()) {
+        echo "<tr>";
+        echo "<td>" . $row["Id"] . "</td>";
+        echo "<td>" . $row["Descricao"] . "</td>";
+        echo "<td>" . $row["Valor"] . "</td>";
+        echo "<td><a href='editar_produto.php?Id=$row[Id]' class='btn btn-warning'>Editar</a> ";
+        echo "<a href='excluir_produto.php?Id=$row[Id]' class='btn btn-danger'>Excluir</a></td>";
+        echo "</tr>";
     }
+} else {
+    echo "<tr><td colspan='4'>Nenhum registro encontrado</td></tr>";
+}
     $conexao->close();
 }
 
