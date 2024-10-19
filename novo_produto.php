@@ -1,7 +1,7 @@
 <?php include "cabecalho.php"; ?>
 
 <?php
-if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigobarras"]) && isset ($_POST["datavalidade"])
+if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigo_barra"]) && isset ($_POST["datavalidade"])
    )
    
 {
@@ -14,7 +14,7 @@ if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigoba
     {
         echo"<br> <div class alert='alert alert-danger'> Campo valor não pode estar em branco </div>";
     }
-    else if ( empty ($_POST["codigobarras"]))
+    else if ( empty ($_POST["codigo_barra"]))
     {
         echo"<br> <div class alert='alert alert-danger'> Campo codigo de barras não pode estar em branco </div>";
     }
@@ -27,11 +27,11 @@ if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigoba
         include "conexao.php";
         $nome = $_POST["nome"];
         $valor = str_replace(",",".",$_POST["valor"]);
-        $codigobarras = $_POST["codigobarras"];
+        $codigo_barra = $_POST["codigo_barra"];
 
        
 
-        $query = "INSERT INTO produtos (DESCRICAO, VALOR, CODIGO_BARRA, ATIVO) VALUES ('$nome', $valor, '$codigobarras', 1 ) ";
+        $query = "INSERT INTO produtos (DESCRICAO, VALOR, CODIGO_BARRA, ATIVO) VALUES ('$nome', $valor, '$codigo_barra', 1 ) ";
         $resultado = $conexao->query($query);
         if($resultado){
             echo "<div class='alert alert-sucess'>
@@ -55,7 +55,7 @@ if( isset ($_POST["nome"]) && isset ($_POST["valor"]) && isset ($_POST["codigoba
 <input class="form-control" type="number" name="valor" />
 <br>
 <label>Código de barras</label>
-<input class="form-control" type="text" name="codigobarras" />
+<input class="form-control" type="text" name="codigo_barra" />
 <br>
 <label>Data de Validade</label>
 <input class="form-control"  type="date" name="datavalidade" />
