@@ -50,8 +50,15 @@ $script = "CREATE DATABASE PW_BD;
             ('Eletrodomésticos'),
             ('Utensílios de Cozinha'),
             ('Papeleria'),
-            ('Acessórios');
-            ('Comidas');38,
+            ('Acessórios'),
+            ('Comidas');
+
+            ALTER TABLE PRODUTOS
+            ADD COLUMN CATEGORIA_ID INT;
+
+            ALTER TABLE PRODUTOS
+            ADD CONSTRAINT FK_PRODUTOS_CATEGORIAS
+            FOREIGN KEY (CATEGORIA_ID) REFERENCES CATEGORIAS ( ID );
             
                     "
         ;
