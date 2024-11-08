@@ -5,7 +5,9 @@ if( isset($_POST['id']) && !empty($_POST['id']) && isset($_POST['descricao']) &&
     include "conexao.php";
     $sql = "UPDATE PRODUTOS SET descricao = '$_POST[descricao]',
                                 valor = $_POST[valor],
-                                codigo_barra = '$_POST[codigo_barra]'
+                                codigo_barra = '$_POST[codigo_barra]',
+                                categoria_ID = $_POST[categoria_id]
+
             WHERE Id = $_POST[id]"
             ;
             
@@ -25,7 +27,7 @@ else
 if ( isset($_GET["Id"]) && !empty( $_GET['Id'] )   )   
 {
     include "conexao.php";
-    $sql = "Select Id, Descricao, Valor, Codigo_Barra from produtos where Id = $_GET[Id]";
+    $sql = "Select Id, Descricao, Valor, Codigo_Barra, categoria_ID from produtos where Id = $_GET[Id]";
     $resultado = $conexao->query($sql);
     if($resultado)
     {
@@ -37,6 +39,7 @@ if ( isset($_GET["Id"]) && !empty( $_GET['Id'] )   )
                 $descricao = $row["Descricao"];
                 $valor = $row["Valor"];
                 $codigo_barra = $row["Codigo_Barra"];
+                $categoria_id =$row["categoria_ID"];
             }
         }
         else
@@ -64,6 +67,32 @@ else
     <input name="descricao" value="<?php echo $descricao ?>" />
     <input name="valor" value="<?php echo $valor ?>" />
     <input name="codigo_barra" value="<?php echo $codigo_barra ?>" />
+    <select name ="categoria_id">
+        <?php
+        $sql_categorias = "Select Id, Nome from Categorias";
+        $resultado_categoria = $conexao->query($sql_categorias);
+        if ($resultado_categoria->num_rows > 0)
+         {  
+            
+            while($row = $resultado_categoria->fetch_assoc()) 
+            {   
+                if($categoria_id == $row[Id])
+                {
+                    echo "<option selected value='$row[Id]'>$row[Nome]</option>";
+                }
+                else{
+            
+                    echo "<option value='$row[Id]'>$row[Nome]</option>";
+                }
+               
+            }
+        }
+        else{
+            echo "<option value='0'>sem categorias casdastradaskkkkkkkk</option>";
+        }
+        ?>
+
+    </select>
     <button type="submit" >
         Salvar Alterações
     </button>
