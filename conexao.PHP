@@ -4,6 +4,9 @@ $usuario = "root";
 $senha = "";
 $banco = "pw_bd";
 
+    
+
+
 $script = "CREATE DATABASE PW_BD;
         USE PW_BD;
         CREATE TABLE PRODUTOS (
@@ -59,6 +62,22 @@ $script = "CREATE DATABASE PW_BD;
             ALTER TABLE PRODUTOS
             ADD CONSTRAINT FK_PRODUTOS_CATEGORIAS
             FOREIGN KEY (CATEGORIA_ID) REFERENCES CATEGORIAS ( ID );
+
+            CREATE TABLE USUARIOS (
+            ID INT PRIMARY KEY AUTO_INCREMENT,
+            LOGIN VARCHAR(50) NOT NULL,
+            SENHA VARCHAR(80) NOT NULL,
+            ATIVO BIT DEFAULT 1
+        );
+            CREATE TABLE PERMISSOES (
+            ID INT PRIMARY KEY AUTO_INCREMENT,
+            DESCRICAO VARCHAR(150) NOT NULL,
+            ROLE VARCHAR(50) NOT NULL
+        );
+
+
+
+
             
                     "
         ;
