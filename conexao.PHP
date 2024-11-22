@@ -1,8 +1,9 @@
 <?php
 $servidor = "localhost";
-$usuario = "root";
+$usuario= "root";
 $senha = "";
 $banco = "pw_bd";
+
 
     
 
@@ -74,6 +75,13 @@ $script = "CREATE DATABASE PW_BD;
             DESCRICAO VARCHAR(150) NOT NULL,
             ROLE VARCHAR(50) NOT NULL
         );
+        CREATE TABLE USUARIOS_PERMISSOES (
+        ID INT PRIMARY KEY AUTO_INCREMENT,
+        USUARIO_ID INT NOT NULL,
+        PERMISSAO_ID INT NOT NULL,
+        CONSTRAINT FK_USUARIO FOREIGN KEY (usuario_id) REFERENCES USUARIOS(ID) ON DELETE CASCADE,
+        CONSTRAINT FK_PERMISSAO FOREIGN KEY (permissao_id) REFERENCES PERMISSOES(ID) ON DELETE CASCADE
+    );
 
 
 
